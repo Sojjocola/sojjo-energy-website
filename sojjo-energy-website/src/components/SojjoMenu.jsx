@@ -1,50 +1,41 @@
 import { useState } from "react";
-import { Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
+import { Typography} from "@mui/material";
 import { Link } from "react-router-dom";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
     <MenuItem
       active={selected === title}
       style={{
-        color: "neutral",
+        color: "primary",
       }}
       onClick={() => setSelected(title)}
       icon={icon}
+      component={<Link to={to} />}
     >
       <Typography>{title}</Typography>
-      <Link to={to} />
+      
     </MenuItem>
   );
 };
 
 const SojjoMenu = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { collapseSidebar } = useProSidebar();
   const [selected, setSelected] = useState("Dashboard");
 
   return (
-    <Box
-      sx={{
-        "& .pro-sidebar-inner": {
-          background: "#1F2A40 !important",
-        },
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
-        },
-        "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
-        },
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
-        },
-        "& .pro-menu-item.active": {
-          color: "#6870fa !important",
-        },
-      }}
-    >
-        
-    </Box>
+    <Sidebar style={{ height: "100vh" }}>
+      
+      <Menu>
+        <MenuItem onClick={() => {collapseSidebar()}} icon={<MenuOutlinedIcon />}><Typography variant="h4">Sojjo Energy</Typography></MenuItem>
+        <Item  title="Dashboard" to="/" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}/>
+        <Item  title="Live Data" to="/livedata" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}/>
+        <Item  title="Settings" to="/settings" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected}/>
+      </Menu>
+    </Sidebar>
   );
 };
 

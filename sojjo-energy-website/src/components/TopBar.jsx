@@ -5,7 +5,7 @@ const TopBar = () => {
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       <Box display="flex">
-        <Typography variant="h3" color="primary">Sojjo Energy</Typography>
+        <Typography variant="h5" color="primary">V0.1.0</Typography>
       </Box>
       <Box display="flex">
         <IconButton>
