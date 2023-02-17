@@ -30,3 +30,9 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+li.ps-active {
+  border-right-color: #77AD78;
+  border-right-width: 8px;
+  border-right-style: solid ;
+}

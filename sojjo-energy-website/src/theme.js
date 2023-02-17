@@ -19,7 +19,7 @@ const sojjoTheme = createTheme({
       light: "#e0e0e0",
     },
     background: {
-      default: "#2d2d2d",
+      default: "#151B18",
     },
   },
   typography: {
